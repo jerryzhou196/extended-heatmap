@@ -1,0 +1,7 @@
+ioPaths:
+  -
+    - "web/*.qrc"
+    - "resources/webster.py"
+uic_options: --from-imports
+init_package: True
+force: False

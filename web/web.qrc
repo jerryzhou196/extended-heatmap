@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+    <file>more_heatmap.css</file>
+    <file>more_heatmap.js</file>
+  </qresource>
+</RCC>
