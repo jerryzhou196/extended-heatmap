@@ -11,6 +11,7 @@ Based off of <a href = "https://github.com/glutanimate/review-heatmap" target="_
 
 <ul> 
         <li> Visualize your daily activity by review type. </li>
+        <li> Remind yourself of <strong> WHEN </strong> you forgot a card so you can remember <strong> WHY </strong> you forgot it </li>
         <li> See which cards you rated again/good/hard/easy by clicking on the cell. </li> 
         <li> See what days you pressed a certain rating more often. </li>
             
@@ -19,5 +20,20 @@ Based off of <a href = "https://github.com/glutanimate/review-heatmap" target="_
 <i> Just as you would for <strong> Review Heatmap </strong>, you can press each date to see the cards you rated again/good/hard/easy on that day. </i>
 
 <h3> PURPOSE </h3>
+POV: Exams are due tommorow and you have been staying on track with your daily Anki. However, you still feel anxious. What if I forget what <i> diabetes insipidus </i> is again? I <i> always </i> forget what the quotient rule is. 
+<br> <br> 
+Forget no more!
+<br> <br>
+With the rating heatmap, you can associate when you forgot a card with the context of a specific date, allowing you to remember why you forgot that card. 
 
-This was created off a need to see cards I rated 'Again' on specific days. These cards are typically recurring lapses, and so it is useful to be able to be reminded of the cards you pressed "Again" by a specific day. For instance, if you have an exam tommorow, it is useful to be able to go back to that 300 card review you did on Saturday and see which cards you clicked "Again" on.  
+<br> 
+<br> 
+Oh? It was after that derivatives test on <strong> Friday </strong> that I rated the quotient rule card 'again'. <i> I probably got it mixed up with the chain rule after that test. </i>
+
+<br> 
+<br> 
+
+By having the context of when you rated each card, you can hone in on the much more important "why" you rated it that way. 
+
+
+
