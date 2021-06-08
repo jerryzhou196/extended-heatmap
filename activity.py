@@ -4,6 +4,7 @@ from __future__ import (absolute_import, division,
 import aqt
 
 import datetime
+from datetime import timedelta, date, datetime
 
 from .platform import ANKI21
 from aqt import mw
@@ -37,7 +38,10 @@ class Activity(object):
 
     def _fetchRawDataFromDatabase(self, review_type):
         offset = self.offset * 3600
-        intial_cmd = "SELECT CAST(STRFTIME('%s', id/1000 - {}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM revlog WHERE (ease = '{}') GROUP BY DAY"
+
+        two_months_ago_in_unix = self.convertToUnix(datetime.today() - timedelta(days=60))
+
+        intial_cmd = "SELECT CAST(STRFTIME('%s', id/1000 - {}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM revlog WHERE (ease = '{}' AND id > {}) GROUP BY DAY"
 
         reviewCode = {
             'Again': 1,
@@ -46,7 +50,7 @@ class Activity(object):
             'Easy': 4
         }
 
-        cmd = intial_cmd.format(offset, reviewCode[review_type])
+        cmd = intial_cmd.format(offset, reviewCode[review_type],two_months_ago_in_unix )
 
         #Edit 2
         #Turns out that https://github.com/ankidroid/Anki-Android/wiki/Database-Structure is too old. They added a hard rating for new cards too so the ease values are way simplier. :(
@@ -96,10 +100,14 @@ class Activity(object):
             # aqt.utils.showText(str(self.col.conf.get("rollover", 4)))
             # aqt.utils.showText("ballsack")
             return self.col.conf.get("rollover", 4)
-        start_date = datetime.datetime.fromtimestamp(self.col.crt)
+        start_date = datetime.fromtimestamp(self.col.crt)
         # aqt.utils.showText(str(datetime.datetime.fromtimestamp(self.col.crt).hour))
         # aqt.utils.showText("ballsack1")
         return start_date.hour
+
+    def convertToUnix(self, dt):
+        epoch = datetime.utcfromtimestamp(0)
+        return (dt - epoch).total_seconds() * 1000.0
 
 
 

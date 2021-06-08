@@ -6,21 +6,23 @@
 
  #cal-heatmapzzzz .subdomain-text{
     fill: lightgray;
-    font-size: 10px;
+    font-size: 15px;
  }
 
   #cal-heatmapzzzz .ch-tooltip{
     margin-top: 70px;
    }
- #cal-heatmapzzzz .cal-heatmap-container .q8{fill: #dae289}
- #cal-heatmapzzzz .cal-heatmap-container .q7{fill: #bbd179}
- #cal-heatmapzzzz  .cal-heatmap-container .q6{fill: #8ab45d}
- #cal-heatmapzzzz  .cal-heatmap-container .q5{fill: #78a851}
- #cal-heatmapzzzz .cal-heatmap-container .q4{fill: #669d45}
- #cal-heatmapzzzz  .cal-heatmap-container .q3{fill: #648b3f}
- #cal-heatmapzzzz  .cal-heatmap-container .q2{fill: #637939}
- #cal-heatmapzzzz .cal-heatmap-container .q1{fill: #4f6e30}
- .cal-heatmap-container .q9{fill: #3b6427}
+
+ #cal-heatmapzzzz  .cal-heatmap-container  .q10{fill: #dae289}
+ #cal-heatmapzzzz .cal-heatmap-container .q9{fill: #bbd179}
+ #cal-heatmapzzzz .cal-heatmap-container .q8{fill: #9cc069}
+ #cal-heatmapzzzz  .cal-heatmap-container .q7{fill: #8ab45d}
+ #cal-heatmapzzzz  .cal-heatmap-container .q6{fill: #78a851}
+ #cal-heatmapzzzz .cal-heatmap-container .q5{fill: #669d45}
+ #cal-heatmapzzzz  .cal-heatmap-container .q4{fill: #648b3f}
+ #cal-heatmapzzzz  .cal-heatmap-container .q3{fill: #637939}
+ #cal-heatmapzzzz .cal-heatmap-container .q2{fill: #4f6e30}
+ #cal-heatmapzzzz  .cal-heatmap-container .q1{fill: #3b6427}
 
  .rh-col20{color: #dae289}
  .rh-col19{color: #bbd179}

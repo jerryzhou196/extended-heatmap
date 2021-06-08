@@ -7,6 +7,16 @@ function applyDateOffset(date) {
     return new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
 }
 
+function getLastMonth() {
+
+     var x = new Date();
+     x.setDate(0); // 0 will result in the last day of the previous month
+     x.setDate(1);
+     return x;
+    //We just need to get a date a month and sometime before that for the minimum month to be on the month before
+}
+
+
 
 class SelectedRating {
     constructor(default_option){
@@ -23,7 +33,7 @@ class SelectedRating {
 var rating = new SelectedRating('Again');
 
 
-function testest(){
+function onChangedSelector(){
    var x = document.getElementById("rated").value;
    pybridge('hm_modeswitch:' + x);
 }
@@ -44,15 +54,11 @@ function testest(){
 //}
 
 
-
 function initMoreHeatmap(data,legend,offset) {
     var more_cal = new CalHeatMap();
     var calTodayDate = applyDateOffset(new Date());
-
-    // console.log("Date: options.today " + new Date(options.today))
-    // console.log("Date: calTodayDate "+ calTodayDate)
-    // console.log("Date: Date() "+ new Date())
-
+    var lastMonth = getLastMonth();
+    console.log(lastMonth)
 
      more_cal.init({
                domain: "month",
@@ -60,9 +66,10 @@ function initMoreHeatmap(data,legend,offset) {
                cellSize: 50,
                itemName: ["cards", "cards"],
                data: data,
+               minDate: lastMonth,
+               maxDate: new Date(),
                subDomainTextFormat: "%d",
                range: 1,
-               start: new Date(2021, 5, 0),
                legend: legend,
                tooltip: true,
                itemSelector: "#cal-heatmapzzzz",
@@ -82,7 +89,7 @@ function initMoreHeatmap(data,legend,offset) {
 
                     if (nb === null || nb == 0) {
                         // No cards for that day. Preserve highlight and return.
-                        more_cal.highlight(calTodayDate); return;
+                        more_cal.highlight(new Date()); return;
                     }
                     today = new Date(calTodayDate);
                     today.setHours(0, 0, 0);  // just a precaution against
@@ -95,7 +102,6 @@ function initMoreHeatmap(data,legend,offset) {
                     cutoff2 = cutoff1 + 86400 * 1000;
                     cmd += "rid_" + document.getElementById("rated").value + ':' + cutoff1 + ":" + cutoff2;
 
-
 //                    FLAWED SEARCH
 //                    cmd += ( "(rated:" + diffDays + ':' + encodeSelectedRating(selectedRating) + ')' );
 //                    if (diffDays > 1) {
@@ -104,17 +110,19 @@ function initMoreHeatmap(data,legend,offset) {
 //                        cmd += ( "(rated:" + diffDays + ':' + encodeSelectedRating(selectedRating) + ')' );
 //                    }
 
-
                     // Invoke browse
                     pybridge("hm_browse:" + cmd);
 
                     // Update date highlight to include clicked on date AND today
-                   more_cal.highlight([calTodayDate, date]);
+                   more_cal.highlight([new Date(), date]);
                 },
              });
 
            return more_cal;
 }
+
+// FAILED ATTEMPTS :(
+
 
 //function onMoreHmNavigate(event, button, direction) {
 //    if (direction === "next") {
@@ -124,19 +132,6 @@ function initMoreHeatmap(data,legend,offset) {
 //        more_cal.previous();
 //     }
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //    cal.init({
 //        domain: "month",
