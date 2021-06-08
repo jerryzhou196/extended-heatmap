@@ -1,17 +1,22 @@
-
-
- #cal-heatmapzzzz .graph-rect {
+#cal-heatmapzzzz .graph-rect {
     fill: #222222;
+    rx: 6px;
+    shape-rendering: geometricPrecision;
+
  }
 
  #cal-heatmapzzzz .subdomain-text{
     fill: lightgray;
-    font-size: 15px;
+    font-size: 13px;
  }
 
   #cal-heatmapzzzz .ch-tooltip{
     margin-top: 70px;
    }
+
+    .graph-label {
+        font-size: 50px;
+    }
 
  #cal-heatmapzzzz  .cal-heatmap-container  .q10{fill: #dae289}
  #cal-heatmapzzzz .cal-heatmap-container .q9{fill: #bbd179}

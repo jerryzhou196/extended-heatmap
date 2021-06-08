@@ -86,15 +86,15 @@ css = """
     }
   
     .more_heatmap body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
     }
 
     .jumbotron h1 {
-    font-size: 63px;
+        font-size: 63px;
     }
 
     .jumbotron .h1 {
@@ -117,6 +117,12 @@ css = """
         color: inherit;
     }
     
+    .btn-xs {
+        background-color: blue;
+        border-style: none;
+        outline: none;
+    }
+
 </style>"""
 
 html_heatmap = """
@@ -142,8 +148,8 @@ html_heatmap = """
     <!-- Put this into Container to visualize border -> border-style: solid; border-color: red; border-inline-width: 5px; #999-->
     <div id="cal-heatmapzzzz" style = "margin-right: 3em; margin-top: 3em;"> 
          <div style = "margin-bottom: 20px;">    
-            <button onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><i class="fas fa-chevron-circle-left"></i></button>    
-            <button onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><i class="fas fa-chevron-circle-right"></i></button>    
+            <button  onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><img height="10px" src = "qrc:/left_arrow.svg"/></button>    
+            <button  onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><img height="10px" src = "qrc:/right_arrow.svg"/></button>    
          </div>     
     </div>   
     <div class="jumbotron" style = " width: 450px; color: #999; background-color: #222222; border-radius: 10px;">

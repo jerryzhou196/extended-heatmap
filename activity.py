@@ -39,7 +39,7 @@ class Activity(object):
     def _fetchRawDataFromDatabase(self, review_type):
         offset = self.offset * 3600
 
-        two_months_ago_in_unix = self.convertToUnix(datetime.today() - timedelta(days=60))
+        two_months_ago_in_unix = self._convertToUnix(datetime.today() - timedelta(days=62))
 
         intial_cmd = "SELECT CAST(STRFTIME('%s', id/1000 - {}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM revlog WHERE (ease = '{}' AND id > {}) GROUP BY DAY"
 
@@ -98,14 +98,12 @@ class Activity(object):
 
         if ANKI21 and self.col.schedVer() == 2:
             # aqt.utils.showText(str(self.col.conf.get("rollover", 4)))
-            # aqt.utils.showText("ballsack")
             return self.col.conf.get("rollover", 4)
         start_date = datetime.fromtimestamp(self.col.crt)
         # aqt.utils.showText(str(datetime.datetime.fromtimestamp(self.col.crt).hour))
-        # aqt.utils.showText("ballsack1")
         return start_date.hour
 
-    def convertToUnix(self, dt):
+    def _convertToUnix(self, dt):
         epoch = datetime.utcfromtimestamp(0)
         return (dt - epoch).total_seconds() * 1000.0
 
