@@ -2,21 +2,22 @@
     fill: #222222;
     rx: 6px;
     shape-rendering: geometricPrecision;
-
  }
 
  #cal-heatmapzzzz .subdomain-text{
     fill: lightgray;
-    font-size: 13px;
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
  }
 
-  #cal-heatmapzzzz .ch-tooltip{
+#cal-heatmapzzzz .ch-tooltip{
     margin-top: 70px;
-   }
+}
 
-    .graph-label {
-        font-size: 50px;
-    }
+#cal-heatmapzzzz .graph-label {
+    font-size: 20px;
+}
 
  #cal-heatmapzzzz  .cal-heatmap-container  .q10{fill: #dae289}
  #cal-heatmapzzzz .cal-heatmap-container .q9{fill: #bbd179}

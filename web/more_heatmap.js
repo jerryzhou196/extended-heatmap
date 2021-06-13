@@ -63,7 +63,7 @@ function initMoreHeatmap(data,legend,offset) {
      more_cal.init({
                domain: "month",
                subDomain: "day",
-               cellSize: 50,
+               cellSize: 60,
                itemName: ["cards", "cards"],
                data: data,
                minDate: lastMonth,

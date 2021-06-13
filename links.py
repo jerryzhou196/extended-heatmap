@@ -19,7 +19,7 @@ from .config import hmd
 
 dict  = {'Again': False, 'Easy': False, 'Good': False, 'Hard': False}
 
-def heatmapLinkHandler(self, url, _old=None):
+def moreHeatmapLinkHandler(self, url, _old=None):
     """Launches Browser when clicking on a graph subdomain"""
 
     if ":" in url:
@@ -39,11 +39,11 @@ def heatmapLinkHandler(self, url, _old=None):
         _old(self, url)
 
     elif (cmd == "hm_browse"):
-        invokeBrowser(arg)
+        invokeMoreHeatmapBrowser(arg)
 
 
 
-def invokeBrowser(search):
+def invokeMoreHeatmapBrowser(search):
     browser = aqt.dialogs.open("Browser", mw)
     browser.form.searchEdit.lineEdit().setText(search)
     browser.onSearchActivated()
@@ -92,7 +92,7 @@ def findRevlogEntriesAgain(self, val):
     )
 
 
-def addFinders(self, col):
+def addMoreHeatmapFinders(self, col):
     """Add custom finder to search dictionary"""
     self.search["rid_Easy"] = self.findRevlogEntriesEasy
     self.search["rid_Hard"] = self.findRevlogEntriesHard
@@ -145,14 +145,12 @@ def on_browser_will_search(search_context):
     search_context.card_ids = found_ids
 
 
-
-
 def initializeLinks():
-    Overview._linkHandler = wrap(Overview._linkHandler, heatmapLinkHandler, "around")
+    Overview._linkHandler = wrap(Overview._linkHandler, moreHeatmapLinkHandler, "around")
     DeckBrowser._linkHandler = wrap(
-        DeckBrowser._linkHandler, heatmapLinkHandler, "around"
+        DeckBrowser._linkHandler, moreHeatmapLinkHandler, "around"
     )
-    DeckStats._linkHandler = heatmapLinkHandler
+    DeckStats._linkHandler = moreHeatmapLinkHandler
 
     try:
         from aqt.gui_hooks import browser_will_search
@@ -165,6 +163,6 @@ def initializeLinks():
         Finder.findRevlogEntriesGood = findRevlogEntriesGood
         Finder.findRevlogEntriesEasy = findRevlogEntriesEasy
         Finder.findRevlogEntriesHard = findRevlogEntriesHard
-        Finder.__init__ = wrap(Finder.__init__, addFinders, "after")
+        Finder.__init__ = wrap(Finder.__init__, addMoreHeatmapFinders, "after")
 
 
