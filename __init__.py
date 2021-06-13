@@ -117,10 +117,13 @@ css = """
         color: inherit;
     }
     
-    .btn-xs {
-        background-color: blue;
-        border-style: none;
-        outline: none;
+    .more_heatmap button {
+       background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;
     }
 
 </style>"""
@@ -148,8 +151,8 @@ html_heatmap = """
     <!-- Put this into Container to visualize border -> border-style: solid; border-color: red; border-inline-width: 5px; #999-->
     <div id="cal-heatmapzzzz" style = "margin-right: 3em; margin-top: 3em;"> 
          <div style = "margin-bottom: 20px;">    
-            <button  onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><img height="10px" src = "qrc:/left_arrow.svg"/></button>    
-            <button  onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap btn-xs"><img height="10px" src = "qrc:/right_arrow.svg"/></button>    
+            <button onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/left_arrow.svg"/></button>    
+            <button onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/right_arrow.svg"/></button>    
          </div>     
     </div>   
     <div class="jumbotron" style = " width: 450px; color: #999; background-color: #222222; border-radius: 10px;">
