@@ -16,6 +16,12 @@ Inspired by <a href = "https://github.com/glutanimate/review-heatmap" target="_b
 
 <i> Just as you would for <strong> Review Heatmap </strong>, you can press each date to see the cards you rated again/good/hard/easy on that day. </i>
 
+<hr>
+
+DOWNLOAD this addon <a href = "https://github.com/glutanimate/review-heatmap" target="_blank"> here </a> for Anki Versions <strong> 2.1.26-2.1.44+ </strong>
+
+<hr>
+
 <h3> PURPOSE </h3>
 POV: Exams are due tommorow and you have been staying on track with your daily Anki. However, you still feel anxious. What if I forget what <i> diabetes insipidus </i> is again? I <i> always </i> forget what the quotient rule is. 
 <br> <br> 
