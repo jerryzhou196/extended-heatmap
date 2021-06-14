@@ -165,6 +165,7 @@ html_heatmap = """
                 <option {select_easy} style = "outline: none;" value="Easy">Easy</option>
                 <option {select_hard} style = "outline: none;" value="Hard">Hard</option>
                 <option {select_good} style = "outline: none;" value="Good">Good</option>
+                <option {select_added} style = "outline: none;" value="Added">Added</option>
                 </select>
             </div>
         </h1>
@@ -212,6 +213,7 @@ def deckbrowserRenderStats(self, _old):
         select_easy= checkIfSelected(selected, 'Easy'),
         select_hard= checkIfSelected(selected, 'Hard'),
         select_good= checkIfSelected(selected, 'Good'),
+        select_added=checkIfSelected(selected, 'Added'),
         offset = everything['offset'],
      )
     return ret +  formated_hm

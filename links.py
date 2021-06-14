@@ -85,8 +85,16 @@ def findRevlogEntriesAgain(self, val):
     """Find cards by revlog timestamp range"""
     args = val[0]
     cutoff1, cutoff2 = [int(i) for i in args.split(":")]
-    aqt.utils.showText(args)
     return "c.id in (select cid from revlog where (id between %d and %d AND (ease = '1')))" % (
+        cutoff1,
+        cutoff2,
+    )
+
+def findRevlogEntriesAdded(self, val):
+    """Find cards by revlog timestamp range"""
+    args = val[0]
+    cutoff1, cutoff2 = [int(i) for i in args.split(":")]
+    return "c.id in (select cid from cards where (id between %d and %d ))" % (
         cutoff1,
         cutoff2,
     )
@@ -98,6 +106,7 @@ def addMoreHeatmapFinders(self, col):
     self.search["rid_Hard"] = self.findRevlogEntriesHard
     self.search["rid_Good"] = self.findRevlogEntriesGood
     self.search["rid_Again"] = self.findRevlogEntriesAgain
+    self.search["rid_Added"] = self.findRevlogEntriesAdded
 
 
 
@@ -105,13 +114,21 @@ def addMoreHeatmapFinders(self, col):
 def _find_cards_reviewed_between(start_date: int, end_date: int, review_type):
     # select from cards instead of just selecting uniques from revlog
     # in order to exclude deleted cards
-    return mw.col.db.list(  # type: ignore
-        "SELECT id FROM cards where id in "
-        "(SELECT cid FROM revlog where (id between ? and ?) AND ease = ?)",
-        start_date,
-        end_date,
-        review_type,
-    )
+
+    if (review_type == '0'):
+        return mw.col.db.list(  # type: ignore
+            "SELECT id FROM cards where (id between ? and ?)",
+            start_date,
+            end_date,
+        )
+    else:
+        return mw.col.db.list(  # type: ignore
+            "SELECT id FROM cards where id in "
+            "(SELECT cid FROM revlog where (id between ? and ?) AND ease = ?)",
+            start_date,
+            end_date,
+            review_type,
+        )
 
 _re_rid = re.compile(r"^rid.+:([0-9]+):([0-9]+)$")
 
@@ -136,6 +153,9 @@ def on_browser_will_search(search_context):
         found_ids = find_rid(search, '1')
     elif search.startswith("rid_Hard"):
         found_ids = find_rid(search, '2')
+    elif search.startswith("rid_Added"):
+        found_ids = find_rid(search, '0')
+
     else:
         return
 
@@ -159,6 +179,7 @@ def initializeLinks():
 
         from anki.find import Finder
 
+        Finder.findRevlogEntriesAdded = findRevlogEntriesAdded
         Finder.findRevlogEntriesAgain = findRevlogEntriesAgain
         Finder.findRevlogEntriesGood = findRevlogEntriesGood
         Finder.findRevlogEntriesEasy = findRevlogEntriesEasy

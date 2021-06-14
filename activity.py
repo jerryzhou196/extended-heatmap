@@ -40,17 +40,21 @@ class Activity(object):
         offset = self.offset * 3600
 
         two_months_ago_in_unix = self._convertToUnix(datetime.today() - timedelta(days=62))
+        if (review_type == "Added"):
+            intial_cmd = "SELECT CAST(STRFTIME('%s', id / 1000 - {offset}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM cards WHERE id > {two_months} GROUP BY DAY"
 
-        intial_cmd = "SELECT CAST(STRFTIME('%s', id/1000 - {}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM revlog WHERE (ease = '{}' AND id > {}) GROUP BY DAY"
+            cmd = intial_cmd.format(offset=offset, two_months=two_months_ago_in_unix)
+        else:
+            intial_cmd = "SELECT CAST(STRFTIME('%s', id/1000 - {offset}, 'unixepoch', 'localtime', 'start of day') as int) AS day, COUNT() FROM revlog WHERE (ease = '{ease}' AND id > {two_months} ) GROUP BY DAY"
 
-        reviewCode = {
-            'Again': 1,
-            'Hard': 2,
-            'Good': 3,
-            'Easy': 4
-        }
+            reviewCode = {
+                'Again': 1,
+                'Hard': 2,
+                'Good': 3,
+                'Easy': 4
+            }
 
-        cmd = intial_cmd.format(offset, reviewCode[review_type],two_months_ago_in_unix )
+            cmd = intial_cmd.format(offset=offset, ease = reviewCode[review_type],two_months = two_months_ago_in_unix )
 
         #Edit 2
         #Turns out that https://github.com/ankidroid/Anki-Android/wiki/Database-Structure is too old. They added a hard rating for new cards too so the ease values are way simplier. :(
