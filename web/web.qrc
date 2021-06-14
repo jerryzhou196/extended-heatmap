@@ -1,8 +1,0 @@
-<RCC>
-  <qresource>
-    <file>more_heatmap.css</file>
-    <file>more_heatmap.js</file>
-    <file>left_arrow.svg</file>
-    <file>right_arrow.svg</file>
-  </qresource>
-</RCC>
