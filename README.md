@@ -1,9 +1,6 @@
 <h1 align = "center"> Rating Heatmap For Anki 2.1 </h1>
 
-
-
-<img width="1552" alt="Screen Shot 2021-06-05 at 9 38 08 PM" src="https://user-images.githubusercontent.com/46613983/120911857-bf561700-c647-11eb-9d33-b3cbaef37035.png">
-
+<img width="1140" alt="Screen Shot 2021-06-12 at 7 36 26 PM" src="https://user-images.githubusercontent.com/46613983/121792691-853fc480-cbb5-11eb-96d2-9374affd124c.png">
 
 Inspired by <a href = "https://github.com/glutanimate/review-heatmap" target="_blank"> Glutanimate's Review Heatmap</a>, Extended Heatmap visualizes your daily card rating activity.
 
@@ -18,6 +15,12 @@ Inspired by <a href = "https://github.com/glutanimate/review-heatmap" target="_b
 </ul>
 
 <i> Just as you would for <strong> Review Heatmap </strong>, you can press each date to see the cards you rated again/good/hard/easy on that day. </i>
+
+<hr>
+
+DOWNLOAD this addon <a href = "https://github.com/glutanimate/review-heatmap" target="_blank"> here </a> for Anki Versions <strong> 2.1.26-2.1.44+ </strong>
+
+<hr>
 
 <h3> PURPOSE </h3>
 POV: Exams are due tommorow and you have been staying on track with your daily Anki. However, you still feel anxious. What if I forget what <i> diabetes insipidus </i> is again? I <i> always </i> forget what the quotient rule is. 
