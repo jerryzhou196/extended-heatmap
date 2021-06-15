@@ -18,7 +18,7 @@ Inspired by <a href = "https://github.com/glutanimate/review-heatmap" target="_b
 
 <hr>
 
-DOWNLOAD this addon <a href = "https://github.com/glutanimate/review-heatmap" target="_blank"> here </a> for Anki Versions <strong> 2.1.26-2.1.44+ </strong>
+DOWNLOAD this addon <a href = "https://ankiweb.net/shared/info/2011818092" target="_blank"> here </a> for Anki Versions <strong> 2.1.26-2.1.44+ </strong>
 
 <hr>
 
