@@ -4,5 +4,6 @@
     <file>more_heatmap.js</file>
     <file>left_arrow.svg</file>
     <file>right_arrow.svg</file>
+    <file>help.png</file>
   </qresource>
 </RCC>

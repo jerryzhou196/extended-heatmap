@@ -54,16 +54,18 @@ function onChangedSelector(){
 //}
 
 
-function initMoreHeatmap(data,legend,offset) {
+function initMoreHeatmap(data,legend,offset,stringCellSize) {
     var more_cal = new CalHeatMap();
     var calTodayDate = applyDateOffset(new Date());
     var lastMonth = getLastMonth();
-    console.log(lastMonth)
+
+    var cellSize = parseInt(stringCellSize,10);
+
 
      more_cal.init({
                domain: "month",
                subDomain: "day",
-               cellSize: 50,
+               cellSize: cellSize,
                itemName: ["cards", "cards"],
                data: data,
                minDate: lastMonth,

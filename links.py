@@ -175,6 +175,7 @@ def initializeLinks():
     try:
         from aqt.gui_hooks import browser_will_search
         browser_will_search.append(on_browser_will_search)
+
     except (ImportError, ModuleNotFoundError):
 
         from anki.find import Finder

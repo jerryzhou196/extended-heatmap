@@ -1,0 +1,11 @@
+{
+
+  "zoom": "75%",
+  "heatmap-cell-size": "50px",
+  "heatmap-cell-text-size": "15px",
+  "heatmap-cell-font": "monospace",
+  "heatmap-cell-weight": "bold",
+  "heatmap-margin-top": "1em"
+
+
+}

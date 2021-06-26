@@ -1,4 +1,4 @@
-
+from aqt import mw
 
 class heatMapData(object):
     def __init__(self):
@@ -11,3 +11,11 @@ class heatMapData(object):
         return self.review_type
 
 hmd = heatMapData()
+
+# ------------------------------------------
+
+
+
+
+
+

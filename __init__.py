@@ -8,6 +8,8 @@ from aqt.qt import *
 
 import aqt
 
+from aqt import gui_hooks
+
 from aqt import mw
 from aqt.overview import Overview
 from aqt.deckbrowser import DeckBrowser
@@ -23,10 +25,6 @@ from . import qrc_resources
 from .config import hmd
 
 from .links import initializeLinks
-
-
-
-
 
 css = """ 
 <style> 
@@ -130,7 +128,6 @@ css = """
 
 html_heatmap = """
 
-
     <script>
     var pybridge = function(arg){{{{
         pycmd(arg);
@@ -143,51 +140,60 @@ html_heatmap = """
    <script type="text/javascript" src="qrc:/more_heatmap.js"></script>
    <script src="https://kit.fontawesome.com/881c8798ee.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="qrc:/more_heatmap.css"/>
-
-{css}
-<body class = "more_heatmap" style = "text-align: center;">   
-
-<div id = "container" class = "more_heatmap" style = "margin-top: 1em; zoom: 75%; text-align: center; display: flex; justify-content: center; align-items: center; ">
-    <!-- Put this into Container to visualize border -> border-style: solid; border-color: red; border-inline-width: 5px; #999-->
-    <div id="cal-heatmapzzzz" style = "margin-right: 3em; margin-top: 3em;"> 
-         <div style = "margin-bottom: 20px;">    
-            <button onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/left_arrow.svg"/></button>    
-            <button onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/right_arrow.svg"/></button>    
-         </div>     
-    </div>   
-    <div class="jumbotron" style = " width: 450px; color: #999; background-color: #222222; border-radius: 10px;">
-        <div class="container more_heatmap" style = "text-align: left;">
-          <h1 class="display-4" style = 'margin-left: 20px;'>
-            <label class = "more_heatmap" for="rated" > <span style = "color: white;"> Displaying </span><br> cards rated  </label><br>
-            <div name = "selector" style = "border-color:#2f2f31;">
-                <select class = "selector" onchange = "onChangedSelector()" id="rated" style = "text-align: left; outline: none; margin-left: 15px; background-color: #2f2f31; border-radius: 10px;">
-                <option {select_again} style = "outline: none;" value="Again">Again</option>
-                <option {select_easy} style = "outline: none;" value="Easy">Easy</option>
-                <option {select_hard} style = "outline: none;" value="Hard">Hard</option>
-                <option {select_good} style = "outline: none;" value="Good">Good</option>
-                <option {select_added} style = "outline: none;" value="Added">Added</option>
-                </select>
+   
+   <style>
+        #cal-heatmapzzzz .subdomain-text{{
+        fill: lightgray;
+        font-size: {heatmap_cell_text_size};
+        font-family: {heatmap_cell_font};
+        font-weight: {heatmap_cell_weight};
+        }}
+    </style>
+   
+   
+   {css}
+     
+    <body class = "more_heatmap" style = "text-align: center;">   
+    
+    <div id = "container" class = "more_heatmap" style = "margin-top: {heatmap_margin_top}; zoom: {zoom}; text-align: center; display: flex; justify-content: center; align-items: center; ">
+        <!-- Put this into Container to visualize border -> border-style: solid; border-color: red; border-inline-width: 5px; #999-->
+        <div id="cal-heatmapzzzz" style = "margin-right: 3em; margin-top: 3em;"> 
+             <div style = "margin-bottom: 20px;">    
+                <button onclick="more_cal.previous();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/left_arrow.svg"/></button>    
+                <button onclick="more_cal.next();" style="margin-bottom: 5px;" class="more_heatmap"><img height="10px" src = "qrc:/right_arrow.svg"/></button>    
+             </div>     
+        </div>   
+        <div class="jumbotron" style = " width: 450px; color: #999; background-color: #222222; border-radius: 10px;">
+            <div class="container more_heatmap" style = "text-align: left;">
+              <h1 class="display-4" style = 'margin-left: 20px;'>
+                <label class = "more_heatmap" for="rated" > <span style = "color: white;"> Displaying </span><br> cards rated  </label><br>
+                <div name = "selector" style = "border-color:#2f2f31;">
+                    <select class = "selector" onchange = "onChangedSelector()" id="rated" style = "text-align: left; outline: none; margin-left: 15px; background-color: #2f2f31; border-radius: 10px;">
+                    <option {select_again} style = "outline: none;" value="Again">Again</option>
+                    <option {select_easy} style = "outline: none;" value="Easy">Easy</option>
+                    <option {select_hard} style = "outline: none;" value="Hard">Hard</option>
+                    <option {select_good} style = "outline: none;" value="Good">Good</option>
+                    <option {select_added} style = "outline: none;" value="Added">Added</option>
+                    </select>
+                </div>
+            </h1>
+              <p class="more_heatmap" lead" style = "margin-left: 20px;">From two months ago. </p>
             </div>
-        </h1>
-          <p class="more_heatmap" lead" style = "margin-left: 20px;">From two months ago. </p>
-        </div>
-      </div>
-</div>
-
-
-
-</body>
-
-
-
-<script type="text/javascript">
-    more_cal = initMoreHeatmap({data},{legend},{offset});
-</script>
+          </div>
+    </div>
+    
+    
+    
+    </body>
+    
+    
+    
+    <script type="text/javascript">
+        more_cal = initMoreHeatmap({data},{legend},{offset},{heatmap_cell_size});
+    </script>
 
 
 """
-
-
 
 def checkIfSelected(name,type):
     if name != type:
@@ -195,38 +201,50 @@ def checkIfSelected(name,type):
     else:
         return "Selected"
 
-
-def deckbrowserRenderStats(self, _old):
-    ret = _old(self)
+def deckbrowserRenderStats():
     a = Activity(mw.col)
     selected = hmd.getReview_type()
 
     everything = a.getEverything(selected)
 
-
+    config = mw.addonManager.getConfig(__name__)
 
     formated_hm = html_heatmap.format(
         css = css,
         data = json.dumps(dict(everything['data'])),
         legend =json.dumps(everything['legend']),
+
         select_again= checkIfSelected(selected, 'Again'),
         select_easy= checkIfSelected(selected, 'Easy'),
         select_hard= checkIfSelected(selected, 'Hard'),
         select_good= checkIfSelected(selected, 'Good'),
         select_added=checkIfSelected(selected, 'Added'),
-        offset = everything['offset'],
+
+        offset=everything['offset'],
+
+        zoom = config['zoom'],
+
+        heatmap_cell_size = config['heatmap-cell-size'].split('px')[0],
+        heatmap_cell_text_size = config['heatmap-cell-text-size'],
+        heatmap_cell_font = config['heatmap-cell-font'],
+        heatmap_cell_weight=config['heatmap-cell-weight'],
+        heatmap_margin_top=config['heatmap-margin-top'],
+
      )
-    return ret +  formated_hm
+    return formated_hm
 
+# def initializeViews():
+#     DeckBrowser._renderStats = wrap(
+#         DeckBrowser._renderStats, deckbrowserRenderStats, "around")
+#
+# initializeViews()
 
+def displayHeatMap(deck_browser, content):
+    content.stats += deckbrowserRenderStats()
 
-def initializeViews():
-    DeckBrowser._renderStats = wrap(
-        DeckBrowser._renderStats, deckbrowserRenderStats, "around")
-
-
-initializeViews()
 initializeLinks()
+gui_hooks.deck_browser_will_render_content.append(displayHeatMap)
+
 
 # < script
 # type = "text/javascript" >
