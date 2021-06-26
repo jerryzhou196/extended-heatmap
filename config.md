@@ -1,4 +1,4 @@
-**If you are here to change the heatmap size, the`Zoom` attribute adjusts the entire heatmap size.** 
+**If you are here to change the heatmap size, the `Zoom` attribute adjusts the entire heatmap size.** 
 
 To see your changes, refresh your deck browser screen. You can do this by clicking "sync" or clicking on the "Decks" button at the 
 top left seen in the image below.  
