@@ -22,6 +22,13 @@ DOWNLOAD this addon <a href = "https://ankiweb.net/shared/info/2011818092" targe
 
 <hr>
 
+<img width="2042" alt="Screen Shot 2021-06-27 at 12 39 27 PM" src="https://user-images.githubusercontent.com/46613983/123555736-d2d73800-d744-11eb-86de-86ac3090d6e9.png">
+
+<h3> <i> NEW </i> CONFIG </h3>
+Due to requests from <a href = "https://www.reddit.com/r/Anki/comments/o7zw4g/hi_how_do_i_change_the_position_of_the_different/"> the Anki subreddit</a> [I didn't know people actually used my addon :') ], there is now an ability to config the heatmap size in the addon. In addition, there is a quick tutorial to explain how to escape the occasional freezing of the deck browser when clicking different decks too fast. 
+
+
+
 <h3> PURPOSE </h3>
 POV: Exams are due tommorow and you have been staying on track with your daily Anki. However, you still feel anxious. What if I forget what <i> diabetes insipidus </i> is again? I <i> always </i> forget what the quotient rule is. 
 <br> <br> 
