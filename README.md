@@ -46,4 +46,5 @@ Oh? It was after that derivatives test on <strong> Friday </strong> that I rated
 By having the context of when you rated each card, you can hone in on the much more important "why" you rated it that way. 
 
 
+![image](https://user-images.githubusercontent.com/46613983/131192014-c1cbe0f3-77de-46b9-b0e8-73532f90656b.png)
 
