@@ -161,9 +161,7 @@ def on_browser_will_search(search_context):
 
     if found_ids is False:
         return
-
-    search_context.card_ids = found_ids
-
+     search_context.search = "cid:" + (",".join(map(str, found_ids)) or "0")
 
 def initializeLinks():
     Overview._linkHandler = wrap(Overview._linkHandler, moreHeatmapLinkHandler, "around")
